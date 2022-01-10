@@ -18,7 +18,7 @@ spark = SparkSession     .builder     .appName(
 
 
 df = spark.read.option("header", "true")     .option("delimiter", ",")     .option(
-    "inferSchema", "true")     .csv("./backend-dev-data-dataset.zip")
+    "inferSchema", "true")     .csv("./backend-dev-data-dataset.txt")
 
 
 # In[9]:
