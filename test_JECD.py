@@ -18,7 +18,7 @@ spark = SparkSession     .builder     .appName(
 
 
 df = spark.read.option("header", "true")     .option("delimiter", ",")     .option(
-    "inferSchema", "true")     .csv("./backend-dev-data-dataset.txt")
+    "inferSchema", "true")     .csv("./backend-dev-data-dataset.zip")
 
 
 # In[9]:
@@ -66,14 +66,15 @@ outliersremoved_df_3 = moments_df_3.filter(F.abs("cont_3_norm") <= stddev_num).f
 
 
 # In[38]:
-
-
+print("outlies removed:")
+outliers_df_3.show(truncate=False)
+print("schema of dataset")
 outliersremoved_df_3.printSchema()
 
 
 # In[45]:
 
-
+print("The transformation column")
 outliersremoved_df_3.select("key_1", "date", "transformation",
                             "avg_cont_9", "avg_cont_10").show(truncate=False)
 
